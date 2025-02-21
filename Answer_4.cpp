@@ -1,35 +1,28 @@
 
 
-// Write a C++ program to check if a given string is a Palindrome or not.
-// A palindrome is a word, number, phrase, or other sequence of characters which
-// reads the same backward as forward, such as madam, racecar.
-// Example:
-// Sample Input: madam
-// Sample Output: True
+// Write a C++ program to verify that all of the letters in the second string appear in the first string as well. Return true otherwise false.
+
 
 #include <iostream>
 #include <string>
 using namespace std;
 
-int main() {
-    string str;
-    cout << "Enter a string: ";
-    cin >> str;
-
-    int n = str.length();
-    bool isPalindrome = true;
-    for (int i = 0; i < n / 2; i++) {
-        if (str[i] != str[n - i - 1]) {
-            isPalindrome = false;
-            break;
+bool containsAllLetters(const string &s1, const string &s2) {
+    // case-sensitive check
+    for (char c : s2) {
+        if (s1.find(c) == string::npos) {
+            return false;
         }
     }
+    return true;
+}
 
-    if (isPalindrome) {
-        cout << "True" << endl;
-    } else {
-        cout << "False" << endl;
-    }
+int main() {
+    string first = "Apple";
+    string second = "Ap";
+
+    bool result = containsAllLetters(first, second);
+    cout << boolalpha << result << endl;
 
     return 0;
 }

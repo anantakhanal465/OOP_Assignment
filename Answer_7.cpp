@@ -1,30 +1,26 @@
-// Write a program to enter a number and check if it is prime or not.
+// Write a program in C++ to display the first n terms of the Fibonacci series.
+// Sample Output:
+// Input number of terms to display: 10
+// Here is the Fibonacci series upto to 10 terms:
+// 0 1 1 2 3 5 8 13 21 34
 
 #include <iostream>
 using namespace std;
 
-bool isPrime(int num) {
-    if(num <= 1) {
-        return false;
+int main(){
+    int n;
+    cout << "Input number of terms to display: ";
+    cin >> n;
+    int a = 0, b = 1;
+    cout << "Here is the Fibonacci series upto to " << n << " terms:" << endl;
+    cout << a << " ";
+    for(int i = 1; i < n; i++){
+        cout << b << " ";
+        int temp = b;
+        b += a;
+        a = temp;
     }
-    for(int i = 2; i <= num/2; i++) {
-        if(num % i == 0) {
-            return false;
-        }
-    }
-    return true;
-}
-
-int main() {
-    int num;
-    cout << "Enter a number: ";
-    cin >> num;
-    if(isPrime(num)) {
-        cout << num << " is a prime number." << endl;
-    } else {
-        cout << num << " is not a prime number." << endl;
-    }
+    cout << endl;
+    
     return 0;
 }
-// Output: Enter a number: 7
-// 7 is a prime number.

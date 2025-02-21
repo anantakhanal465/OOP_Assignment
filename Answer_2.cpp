@@ -1,27 +1,30 @@
-// WAP to calculate the net salary of an employee under the following condition:
-// a. If salary greater than 20,000 and less than equal to 25,000; Bonus is 15%
-// b. If salary is less than equal to 20,000; Bonus is 10%
-// c. Else bonus is 5%
+
+
+// Write a program in C++ to find the last prime number that occurs before the entered
+// number.
+// Input a number to find the last prime number occurs before the number: 50
+// 47 is the last prime number before 50
 
 #include <iostream>
 using namespace std;
 
-double calculateNetSalary(double salary) {
-    double bonus;
-    if(salary > 20000 && salary <= 25000) {
-        bonus = 0.15;
-    } else if(salary <= 20000) {
-        bonus = 0.10;
-    } else {
-        bonus = 0.05;
+int main(){
+    int n;
+    cout << "Input a number to find the last prime number occurs before the number: ";
+    cin >> n;
+    for(int i = n - 1; i > 1; i--){
+        bool isPrime = true;
+        for(int j = 2; j * j <= i; j++){
+            if(i % j == 0){
+                isPrime = false;
+                break;
+            }
+        }
+        if(isPrime){
+            cout << i << " this is the last prime number before " << n << endl;
+            break;
+        }
     }
-    return salary + (salary * bonus);
-}
-
-int main() {
-    double salary;
-    cout << "Enter the salary of the employee: ";
-    cin >> salary;
-    cout << "Net salary of the employee is: " << calculateNetSalary(salary) << endl;
+    
     return 0;
 }

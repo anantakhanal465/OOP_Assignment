@@ -1,30 +1,31 @@
+
+// Write a C++ program that displays the pattern with the highest columns in the first
+// row and digits with the right justified digits.
+// Sample Output:
+// Input number of rows: 5
+// 12345
+// 1234
+// 123
+// 12
+// 1
+
 #include <iostream>
-#include <cmath>
-
-using std::cout;
-using std::endl;
-using std::cin;
-
-
-float areaOfTriangle(float a, float b, float c) {
-    float s = (a + b + c) / 2;
-    return sqrt(s * (s - a) * (s - b) * (s - c));
-}
-float areaOfTriangle(float base, float height) {
-    return 0.5 * base * height;
-}
+using namespace std;
 
 int main() {
-    float a, b, c, base, height;
+    int rows;
+    cout << "Input number of rows: ";
+    cin >> rows;
 
- 
-    cout << "Enter the three sides of the triangle: ";
-    cin >> a >> b >> c;
-    cout << "Area of triangle (using sides): " << areaOfTriangle(a, b, c) << endl;
-
-    cout << "Enter the base and height of the triangle: ";
-    cin >> base >> height;
-    cout << "Area of triangle (using base and height): " << areaOfTriangle(base, height) << endl;
-
+    for (int i = 0; i < rows; i++) {
+        for (int space = 0; space < i; space++) {
+            cout << " ";
+        }
+        for (int j = 1; j <= (rows - i); j++) {
+            cout << j;
+        }
+        cout << endl;
+    }
+    
     return 0;
 }

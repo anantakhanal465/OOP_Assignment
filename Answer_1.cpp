@@ -1,20 +1,41 @@
 
-
-// Write a C++ program to find the sum of all elements in an array using recursion.
-
+// Write a C++ program to implement a class called Employee that has private member variables for name, employee ID, and salary. Include member functions to calculate and set salary based on employee performance.
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-int sumArray(int arr[], int n) {
-    if (n <= 0) return 0;
-    return arr[n-1] + sumArray(arr, n-1);
-}
+class Employee {
+    private:
+        string name;
+        int employeeID;
+        double salary;
+
+    public:
+        Employee(string n, int id, double sal)
+            : name(n), employeeID(id), salary(sal) {}
+
+    void setPerformance(int rating) {
+        if(rating >= 9) {
+            salary *= 1.30;
+        } else if(rating >= 6) {
+            salary *= 1.10;
+        } else {
+            salary *= 1.02;
+        }
+    }
+
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Employee ID: " << employeeID << endl;
+        cout << "Salary: " << salary << endl;
+    }
+};
 
 int main() {
-    int arr[] = {5, 6, 7, 8, 9};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    cout << "Sum of array elements: " << sumArray(arr, n) << endl;
+    Employee emp("John Doe", 1234, 80000);
+    emp.setPerformance(8);
+    emp.display();
 
     return 0;
 }

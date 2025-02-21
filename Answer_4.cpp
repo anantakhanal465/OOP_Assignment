@@ -1,26 +1,29 @@
-// Write a C++ program to add up all the digits between two given integers. Add all the
-// digits between 11 and 16 and it should be inclusive of the two numbers.
-// Example: Add up all the digits between 39 and 41 is: 21
-// Sample Data
-// (5, 9) -> 35
-// (12, 18) -> 42
-// (39, 41) -> 21
+
+
+// Write a program in C++ to display the first n terms of the Fibonacci series.
+// Sample Output:
+// Input number of terms to display: 10
+// Here is the Fibonacci series upto to 10 terms:
+// 0 1 1 2 3 5 8 13 21 34
+
 
 #include <iostream>
 using namespace std;
 
 int main(){
-    int a, b, sum = 0;
-    cout << "Enter two numbers: ";
-    cin >> a >> b;
-    for(int i = a; i <= b; i++){
-        int temp = i;
-        while(temp != 0){
-            sum += temp % 10;
-            temp /= 10;
-        }
+    int n;
+    cout << "Input number: ";
+    cin >> n;
+    int a = 0, b = 1;
+    cout << "The Fibonacci series upto to " << n << " terms:" << endl;
+    cout << a << " ";
+    for(int i = 1; i < n; i++){
+        cout << b << " ";
+        int temp = b;
+        b += a;
+        a = temp;
     }
-    cout << "The sum of all the digits between " << a << " and " << b << " is: " << sum << endl;
+    cout << endl;
     
     return 0;
 }

@@ -1,35 +1,25 @@
+
+// Write a program in C++ to find the number and sum of all integers between 100 and
+// 200 which are divisible by 9.
+// Sample Output:
+// Numbers between 100 and 200, divisible by 9:
+// 108 117 126 135 144 153 162 171 180 189 198
+// The sum : 1683
+
+
 #include <iostream>
 using namespace std;
 
-class Base
-{
-    public:
-        int a;
-    private:
-        int b;
-    protected:
-        int c;
-};
-
-class Derived : public Base
-{
-    public:
-        void set(int x, int y, int z)
-        {
-            a = x;
-            b = y;
-            c = z;
+int main(){
+    cout << "Numbers between 100 and 200, divisible by 9:" << endl;
+    int sum = 0;
+    for(int i = 100; i <= 200; i++){
+        if(i % 9 == 0){
+            cout << i << " ";
+            sum += i;
         }
-        void show()
-        {
-            cout << a << " " << b << " " << c << endl;
-        }
-};
-
-int main()
-{
-    Derived d;
-    d.set(10, 20, 30);
-    d.show();
+    }
+    cout << endl << "The sum: " << sum << endl;
+    
     return 0;
 }

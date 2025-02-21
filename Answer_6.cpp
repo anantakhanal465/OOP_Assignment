@@ -1,26 +1,53 @@
 
-// Write a C++ program to find the two repeating elements in a given array of integers.
+// Write a C++ program to convert a given non-negative integer into English words.
+// Example:
+// Sample Input: 12
+// Sample Output: Twelve
+// Sample Input: 29
+// Sample Output: Twenty Nine
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-void findRepeatingElements(int arr[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[abs(arr[i])] > 0)
-            arr[abs(arr[i])] = -arr[abs(arr[i])];
-        else
-            cout << abs(arr[i]) << " ";
+
+string convertToWords(int n) {
+    string ones[] = { "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+                      "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
+    string tens[] = { "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+
+    if (n == 0)
+        return "Zero";
+
+    string result = "";
+
+    if (n >= 10 && n <= 19) {
+        result = ones[n];
     }
+    else {
+        if (n >= 20) {
+            result += tens[n / 10];
+            n %= 10;
+            if (n > 0)
+                result += " " + ones[n];
+        } else if (n > 0) {
+            result += ones[n];
+        }
+    }
+
+    return result;
 }
 
-int main()
-{
-    int arr[] = {8, 6, 6,7, 8, 9, 0, 2, 0};
-    int n = sizeof(arr) / sizeof(arr[0]);
+int main() {
+    int num;
+    cout << "Enter a non-negative integer: ";
+    cin >> num;
 
-    findRepeatingElements(arr, n);
+    if (num < 0) {
+        cout << "Please enter a non-negative integer!" << endl;
+    } else {
+        cout << "The number in English is: " << convertToWords(num) << endl;
+    }
 
     return 0;
 }

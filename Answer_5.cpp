@@ -1,37 +1,56 @@
 
 
-// Write a C++ program to update every array element by multiplication of the next and previous values of a given array of integers.
+// Write a C++ program to find a word in a given string that has the highest number of repeated letters.
+// Example:
+// Sample Input: Print a welcome text in a separate line.
+// Sample Output: Word which has the highest number of repeated letters. Separate
 
 #include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
-
-void updateArray(int arr[], int n)
-{
-    if (n <= 1)
-        return;
-
-    int prev = arr[0];
-    arr[0] = arr[0] * arr[1];
-
-    for (int i = 1; i < n - 1; i++)
-    {
-        int curr = arr[i];
-        arr[i] = prev * arr[i + 1];
-        prev = curr;
-    }
-
-    arr[n - 1] = prev * arr[n - 1];
-}
 
 int main()
 {
-    int arr[] = {5, 6, 7, 8, 9};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    updateArray(arr, n);
-
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-
+    string s;
+    getline(cin, s);
+    vector<string> words;
+    string word = "";
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == ' ')
+        {
+            words.push_back(word);
+            word = "";
+        }
+        else
+        {
+            word += s[i];
+        }
+    }
+    words.push_back(word);
+    int max = 0;
+    string maxWord = "";
+    for (int i = 0; i < words.size(); i++)
+    {
+        string temp = words[i];
+        sort(temp.begin(), temp.end());
+        int count = 1;
+        for (int j = 0; j < temp.size(); j++)
+        {
+            if (temp[j] == temp[j + 1])
+            {
+                count++;
+            }
+        }
+        if (count > max)
+        {
+            max = count;
+            maxWord = words[i];
+        }
+    }
+    cout << maxWord << endl;
+    
     return 0;
 }

@@ -1,34 +1,27 @@
-// Write a temperature conversion program from Celsius to Fahrenheit and vice-versa
-// depending on choice by the user.
-// °𝐹 = (°𝐶 ×9/5) + 32
+
+// Write a C++ program to make such a pattern like a right angle triangle with the number increased by 1.
+// Sample Output:
+// Input number of rows: 4
+// 1
+// 2 3
+// 4 5 6
+// 7 8 9 10
 
 #include <iostream>
 using namespace std;
 
-double celsiusToFahrenheit(double celsius) {
-    return (celsius * 9/5) + 32;
-}
-
-double fahrenheitToCelsius(double fahrenheit) {
-    return (fahrenheit - 32) * 5/9;
-}
-
-int main() {
-    int choice;
-    double temperature;
-    cout << "Enter the temperature: ";
-    cin >> temperature;
-    cout << "Enter your choice: \n1. Celsius to Fahrenheit\n2. Fahrenheit to Celsius\n";
-    cin >> choice;
-    switch(choice) {
-        case 1:
-            cout << "Temperature in Fahrenheit: " << celsiusToFahrenheit(temperature) << endl;
-            break;
-        case 2:
-            cout << "Temperature in Celsius: " << fahrenheitToCelsius(temperature) << endl;
-            break;
-        default:
-            cout << "Invalid choice!" << endl;
+int main(){
+    int n;
+    cout << "Input number of rows: ";
+    cin >> n;
+    int counter = 1;
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            cout << counter << " ";
+            counter++;
+        }
+        cout << endl;
     }
+    
     return 0;
 }

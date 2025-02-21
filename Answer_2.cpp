@@ -1,29 +1,25 @@
 
-
-// Write a program in C++ to find the last prime number that occurs before the entered
-// number.
-// Input a number to find the last prime number occurs before the number: 50
-// 47 is the last prime number before 50
+// Write a program in C++ to display the pattern like right angle triangle with number.
+// Sample Output:
+// Input number of rows: 5
+// 1
+// 12
+// 123
+// 1234
+// 12345
 
 #include <iostream>
 using namespace std;
 
 int main(){
     int n;
-    cout << "Input a number to find the last prime number occurs before the number: ";
+    cout << "Input number of rows: ";
     cin >> n;
-    for(int i = n - 1; i > 1; i--){
-        bool isPrime = true;
-        for(int j = 2; j * j <= i; j++){
-            if(i % j == 0){
-                isPrime = false;
-                break;
-            }
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            cout << j;
         }
-        if(isPrime){
-            cout << i << " this is the last prime number before " << n << endl;
-            break;
-        }
+        cout << endl;
     }
     
     return 0;

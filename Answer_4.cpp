@@ -1,29 +1,26 @@
-// Calculate the:
-// a. The area of a triangle
-// b. Perimeter of a triangle
+// Write a C++ program to add up all the digits between two given integers. Add all the
+// digits between 11 and 16 and it should be inclusive of the two numbers.
+// Example: Add up all the digits between 39 and 41 is: 21
+// Sample Data
+// (5, 9) -> 35
+// (12, 18) -> 42
+// (39, 41) -> 21
 
 #include <iostream>
-#include <cmath>
-
 using namespace std;
 
-// Function to calculate the area of a triangle using Heron's formula
-double area(double side1, double side2, double side3) {
-    double s = (side1 + side2 + side3) / 2;
-    return sqrt(s * (s - side1) * (s - side2) * (s - side3));
-}
-
-// Function to calculate the perimeter of a triangle
-double perimeter(double side1, double side2, double side3) {
-    return side1 + side2 + side3;
-}
-
-int main() {
-    double a, b, c;
-    cout << "Enter the three sides of the triangle: ";
-    cin >> a >> b >> c;
-    cout << "Area of the triangle is: " << area(a, b, c) << endl;
-    cout << "Perimeter of the triangle is: " << perimeter(a, b, c) << endl;
-
+int main(){
+    int a, b, sum = 0;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+    for(int i = a; i <= b; i++){
+        int temp = i;
+        while(temp != 0){
+            sum += temp % 10;
+            temp /= 10;
+        }
+    }
+    cout << "The sum of all the digits between " << a << " and " << b << " is: " << sum << endl;
+    
     return 0;
 }

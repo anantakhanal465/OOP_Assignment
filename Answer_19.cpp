@@ -1,16 +1,23 @@
-// write a program to check if the number is odd or even.
+// Write a C++ program to convert a binary number to a decimal number.
+// Sample Output:
+// Input a binary number: 1011
+// The decimal number: 11
+
+
 #include <iostream>
-#include <cmath> 
+#include <cmath>
 using namespace std;
 
-int main() {
-    float number;
-    cout << "Enter the number:";
-    cin >> number;
-    if (fmod(number, 2) == 0) { 
-        cout << "the number is even";
-    } else {
-        cout << "the number is odd";
+int main()
+{
+    string binary;
+    cout << "Input a binary number: ";
+    cin >> binary;
+    int decimal = 0;
+    for(int i = 0; i < binary.length(); i++){
+        decimal += (binary[i] - '0') * pow(2, binary.length() - i - 1);
     }
+    cout << "The decimal number: " << decimal << endl;
+    
     return 0;
 }

@@ -1,56 +1,25 @@
 
 
-// Write a C++ program to find a word in a given string that has the highest number of repeated letters.
-// Example:
-// Sample Input: Print a welcome text in a separate line.
-// Sample Output: Word which has the highest number of repeated letters. Separate
+// Write a C++ program to implement a recursive function to check if a given string is a palindrome.
+
 
 #include <iostream>
 #include <string>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
-int main()
-{
-    string s;
-    getline(cin, s);
-    vector<string> words;
-    string word = "";
-    for (int i = 0; i < s.size(); i++)
-    {
-        if (s[i] == ' ')
-        {
-            words.push_back(word);
-            word = "";
-        }
-        else
-        {
-            word += s[i];
-        }
-    }
-    words.push_back(word);
-    int max = 0;
-    string maxWord = "";
-    for (int i = 0; i < words.size(); i++)
-    {
-        string temp = words[i];
-        sort(temp.begin(), temp.end());
-        int count = 1;
-        for (int j = 0; j < temp.size(); j++)
-        {
-            if (temp[j] == temp[j + 1])
-            {
-                count++;
-            }
-        }
-        if (count > max)
-        {
-            max = count;
-            maxWord = words[i];
-        }
-    }
-    cout << maxWord << endl;
-    
+bool isPalindrome(const string &s, int start, int end) {
+    if (start >= end) return true;
+    if (s[start] != s[end]) return false;
+    return isPalindrome(s, start + 1, end - 1);
+}
+
+int main() {
+    string str;
+    cout << "Enter the string: ";
+    getline(cin, str);
+
+    bool result = isPalindrome(str, 0, str.size() - 1);
+    cout << boolalpha << result << endl;
+
     return 0;
 }

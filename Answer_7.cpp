@@ -1,37 +1,31 @@
 
 
-// Write a C++ program that removes a specific character from a given string. Return the updated string.
-// Test Data:
-// ("Filename", "e") -> "Filnam"
-// ("Compilation Time", "i") -> "Complaton Tme"
+// Write a C++ program to implement a recursive function to find the sum of all prime numbers in a given range.
+
 
 #include <iostream>
-#include <string>
 using namespace std;
 
-string removeCharacter(string str, char ch) {
-    string result = "";
+bool isPrime(int num, int i = 2) {
+    if (num < 2) return false;
+    if (i * i > num) return true;
+    if (num % i == 0) return false;
+    return isPrime(num, i + 1);
+}
 
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] != ch) {
-            result += str[i];
-        }
-    }
-
-    return result;
+int sumPrimes(int start, int end) {
+    if (start > end) return 0;
+    return (isPrime(start) ? start : 0) + sumPrimes(start + 1, end);
 }
 
 int main() {
-    string str;
-    char ch;
+    int s, e;
+    cout << "Enter start of range: ";
+    cin >> s;
+    cout << "Enter end of range: ";
+    cin >> e;
 
-    str = "Filename";
-    ch = 'e';
-    cout << "Updated string: " << removeCharacter(str, ch) << endl;
-
-    str = "Compilation Time";
-    ch = 'i';
-    cout << "Updated string: " << removeCharacter(str, ch) << endl;
+    cout << "Sum of prime numbers in range is: " << sumPrimes(s, e) << endl;
     
     return 0;
 }

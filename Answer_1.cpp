@@ -1,30 +1,20 @@
 
-// Write a program in C++ to find the perfect numbers between 1 and 500.
-// The perfect numbers between 1 to 500 are:
-// 6
-// 28
-// 496
-// A perfect number is a positive integer that is equal to the sum of its positive proper
-// divisors, that is, divisors excluding the number itself.
-// For instance, 6 has proper divisors 1, 2 and 3, and 1 + 2 + 3 = 6, so 6 is a perfect
-// number.
+
+// Write a C++ program to find the sum of all elements in an array using recursion.
+
 
 #include <iostream>
 using namespace std;
 
-int main(){
-    cout << "The perfect numbers between 1 to 500 are: " << endl;
-    for(int i = 1; i <= 500; i++){
-        int sum = 0;
-        for(int j = 1; j < i; j++){
-            if(i % j == 0){
-                sum += j;
-            }
-        }
-        if(sum == i){
-            cout << i << endl;
-        }
-    }
-    
+int sumArray(int arr[], int n) {
+    if (n <= 0) return 0;
+    return arr[n-1] + sumArray(arr, n-1);
+}
+
+int main() {
+    int arr[] = {5, 6, 7, 8, 9};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "Sum of array elements: " << sumArray(arr, n) << endl;
+
     return 0;
 }
